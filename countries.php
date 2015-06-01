@@ -16,7 +16,7 @@ if (isset($db) === true) {
 	}
 
 		//PREPARE THE SQL Query to SELECT WorldRegionID
-		$sqlCountry = 'SELECT WorldRegionName, CountryCode, CommonName
+		$sqlCountry = 'SELECT CountryCode, CommonName
 					   FROM country
 					   WHERE country.WorldRegionID = :WorldRegionID';
 
@@ -33,8 +33,8 @@ if (isset($db) === true) {
 		//STORES HOW MANY ROWS have been FOUND
 		$numRowsCountry = $queryCountry->rowCount();
 
-		//fetchAll() will RETURN ALL of teh ARRAY STORING the OUTPUT from the SQL Query
-		$countries = $queryCountry>fetch(PDO::FETCH_ASSOC);
+		//fetchAll() will RETURN ALL of the ARRAY STORING the OUTPUT from the SQL Query
+		$countries = $queryCountry->fetch(PDO::FETCH_ASSOC);
 
 		print_r($countries);
 }
@@ -60,7 +60,7 @@ if (isset($db) === true) {
 			<?php 
 
 			if ($numRowsCountry > 0) {
-				echo '<b><a href="photographers.php?id=3">Melbourne</a></b>';
+				echo '<b><a href="locations.php?id=3">Melbourne</a></b>';
 			} else {
 				echo 'No records found!';
 			}
@@ -68,14 +68,6 @@ if (isset($db) === true) {
 
 			?>
 
-
-		</section>
-		<?php 
-
-
-
-
-		?>
 
 
         <script src="js/main.js"></script>

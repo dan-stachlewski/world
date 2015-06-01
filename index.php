@@ -1,6 +1,6 @@
 <?php 
 
-//include the code that connects to the database and creates a $db connection object
+//INCLUDES Code that CONNECTS TO DATABASE and creates $db CONNECTION OBJECT
 require_once('includes/db-connect.php');
 
 if (isset($db) === true) {
@@ -32,7 +32,7 @@ if (isset($db) === true) {
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="World in Pictures">
+        <meta name="description" content="Regions | World in Pictures">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home</title>
         <link rel="stylesheet" href="css/style.css">
@@ -46,7 +46,7 @@ if (isset($db) === true) {
 			<?php 
 
 			if ($numRowsWorldRegion > 0) {
-				echo '<b><a href="locations.php?id=3">Australia</a></b><br/>';
+				echo '<b><a href="countries.php?id=3">Australia</a></b><br/>';
 			} else {
 				echo 'No records found!';
 			}
