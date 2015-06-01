@@ -3,6 +3,28 @@
 //include the code that connects to the database and creates a $db connection object
 require_once('includes/db-connect.php');
 
+if (isset($db) === true) {
+
+	//prepare SQL query to SELECT WorldRegion
+	$sqlWorldRegion = 'SELECT WorldRegionID, WorldRegionName
+					   FROM worldregion';
+
+	//PREPARE MEHOD does not EXECUTE Query but checks Query for PROBLEMS
+	$queryWorldRegion = $db->prepare($sqlWorldRegion);
+	
+	//PDO METHOD Executes the Query Stmnt that has been PREPARED - STORES OUTPUT in array
+	$queryWorldRegion->execute();
+
+	//PDO METHOD Stors HOW MANY rows have been RETURENED
+	$numRowsWorldRegion = $queryWorldRegion->rowCount();
+
+	//FETCH ALL METHOD will RETURN ALL of the array STORED in the OUTPUT from the SQL Query
+	$worldRegions = $queryWorldRegion->fetch(PDO::FETCH_ASSOC);
+
+	print_r($worldRegions);
+
+}
+
 
 ?>
 
@@ -23,8 +45,8 @@ require_once('includes/db-connect.php');
 			
 			<?php 
 
-			if ($numRowsCountry > 0) {
-				echo '<b><a href="Locations.php?id=AU>"Australia</a></b><br/>';
+			if ($numRowsWorldRegion > 0) {
+				echo '<b><a href="locations.php?id=3">Australia</a></b><br/>';
 			} else {
 				echo 'No records found!';
 			}

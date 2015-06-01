@@ -14,7 +14,7 @@ $config = array (
 // - try {} catch() {}
 
 try {
-	$db = new PDO('mysql:host='.$config['host'].';dbname='.$config['dbname'], $config['user'], $config['pwd']);
+	$db = new PDO('mysql:host='.$config['host'].';dbname='.$config['dbname'], $config['user'], $config['password']);
 } catch(PDOException $e) {
 	echo 'Cannot connect to database';
 }
