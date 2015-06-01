@@ -15,28 +15,28 @@ if (isset($db) === true) {
 		exit;
 	}
 
-		//PREPARE THE SQL Query to SELECT WorldRegionID
-		$sqlCountry = 'SELECT WorldRegionName, CountryCode, CommonName
-					   FROM country
-					   WHERE country.WorldRegionID = :WorldRegionID';
+		//PREPARE THE SQL Query to SELECT CountryCode
+		$sqlLocation = 'SELECT LocationName, LocationID
+					   FROM location
+					   WHERE location.CountryCode = :CountryCode';
 
 		//PREPARE METHOD DOES NOT ACTUALLY EXECUTE Query but CHECK QUery for PROLEMS
-		$queryCountry = $db->prepare($sqlCountry);
+		$queryLocation = $db->prepare($sqlLocation);
 
 		//BINDING INPUT INTO PARAMETER IN "WHERE" STATEMENT 
-		$queryCountry->bindvalue(':WorldRegionID', $id, PDO::PARAM_STR
+		$queryLocation->bindvalue(':CountryCode', $id, PDO::PARAM_STR
 			);
 
 		//PDO METHOD EXECUTES Query STATEMENT that has been PREPEARED 
-		$queryCountry->execute();
+		$queryLocation->execute();
 
 		//STORES HOW MANY ROWS have been FOUND
-		$numRowsCountry = $queryCountry->rowCount();
+		$numRowsLocation = $queryLocation->rowCount();
 
 		//fetchAll() will RETURN ALL of teh ARRAY STORING the OUTPUT from the SQL Query
-		$countries = $queryCountry>fetch(PDO::FETCH_ASSOC);
+		$locations = $queryLocation->fetch(PDO::FETCH_ASSOC);
 
-		print_r($countries);
+		print_r($numRowsLocation);
 }
 
 ?>
@@ -46,21 +46,21 @@ if (isset($db) === true) {
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="Countries | World in Pictures">
+        <meta name="description" content="Locations | World in Pictures">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Countries in Pictures</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="author" href="humans.txt">
     </head>
     <body>
-        <h1>Welcome to Countries in Pictures</h1>
+        <h1>Welcome to Locations in Pictures</h1>
 
 		<section>
 			
 			<?php 
 
-			if ($numRowsCountry > 0) {
-				echo '<b><a href="photographers.php?id=3">Melbourne</a></b>';
+			if ($numRowsLocation > 0) {
+				echo '<b><a href="photographers.php?id=706">Melbourne</a></b>';
 			} else {
 				echo 'No records found!';
 			}

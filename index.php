@@ -46,7 +46,7 @@ if (isset($db) === true) {
 			<?php 
 
 			if ($numRowsWorldRegion > 0) {
-				echo '<b><a href="countries.php?id=3">Australia</a></b><br/>';
+				echo '<b><a href="countries.php?id=3">Australia &amp; Oceania</a></b><br/>';
 			} else {
 				echo 'No records found!';
 			}

@@ -60,7 +60,7 @@ if (isset($db) === true) {
 			<?php 
 
 			if ($numRowsCountry > 0) {
-				echo '<b><a href="locations.php?id=3">Melbourne</a></b>';
+				echo '<b><a href="locations.php?id=AU">Australia</a></b>';
 			} else {
 				echo 'No records found!';
 			}
