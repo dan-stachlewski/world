@@ -1,6 +1,6 @@
 <?php
 
-//REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE 
+//REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE
 require_once('includes/connection.php');
 
 //CHECK DATABASE CONNECTION OPEN
@@ -56,7 +56,7 @@ if (isset($db) === true) {
 
 		</section><!-- /END section -->
 
-
         <script src="js/main.js"></script>
     </body>
 </html>
+<!-- HTML5 DOCUMENT END -->
