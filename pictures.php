@@ -1,6 +1,6 @@
 <?php
 
-//REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE 
+//REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE
 require_once('includes/connection.php');
 
 //CHECK DATABASE CONNECTION OPEN
@@ -11,17 +11,17 @@ if (isset($db) === true) {
 
 //IF ID IN URL EXISTS if(!empty($_GET['id']))
 //USE VARIABLE HANDLING FUNCTION INTVAL [ RETURNS AN INTEGER VALUE OF A VARIABLE ]
-//USE INTEGER VERSION OF ID TO RETRIEVE THE ASSOCIATED DATA FROM THE country TABLE
-//SELECTING TABLE country
-//SELECTING CommonName, CountryCode DATA FROM TABLE
-//WHERE WorldRegionID IS PASSED FROM COUNTRIES PAGE TO LOCATIONS PAGE VIA URL, COVERTED TO INTEGER FOR USE
+//USE INTEGER VERSION OF ID TO RETRIEVE THE ASSOCIATED DATA FROM THE picture TABLE
+//SELECTING TABLE picture
+//SELECTING PictureID, PhotoName DATA FROM TABLE
+//WHERE CountryCode IS PASSED FROM LOCATIONS PAGE TO PICTURES PAGE VIA URL, COVERTED TO INTEGER FOR USE
 //ASSIGN DATA TO VARIABLE $sql
 //IF EMPTY ID REDIRECT USER TO INDEX PAGE
 if(!empty($_GET['id'])){
 	$id = intval($_GET['id']);
-    $sql = "SELECT `CommonName`, `CountryCode`
-            FROM `country`
-            WHERE `WorldRegionID`='".$id."'";
+    $sql = "SELECT `PictureID`, `PhotoName`
+            FROM `picture`
+            WHERE `LocationID`='".$id."'";
 	} else {
 		header("Location: http://localhost/worldinpic/index.php");
 	exit();
@@ -55,17 +55,24 @@ if(!empty($_GET['id'])){
 
 	//USING WHILE LOOP TO PRINT RESULTS OF QUERY
 	//DATA RETRIEVED USING PDO:: FETCH_ASSOC - [ RETURNS ARRAY INDEXED BY COL NAME AS RETURNED IN RESULTS SET ]
-	//EACH RESULT PRINTED TO SCREEN AS A DYNAMIC LINK ASSOCIATED TO DATA ON locations.php?id='[CommonName]'
+	//EACH RESULT PRINTED TO SCREEN AS:
+	// - A DYNAMIC LINK ASSOCIATED TO DATA ON LINK picture.php?id='[PictureID]'
+	// - THUMBNAIL IMG FROM DIR PHOTOS/$row['PhotoName'] & DYNAMIC PHOTO NAME STORED IN THE TABLE
 	while ($row = $query->fetch(PDO::FETCH_ASSOC)){
-		echo '<a href="locations.php?id='
-		.$row['CountryCode']. '">'
-		.$row['CommonName']. '</a><br/>';
-
-	} //END while function
-
-
-
 ?>
+
+      <a href="picture.php?id=<?php echo $row['PictureID']; ?>">
+	    <img src="photos/<?php echo $row['PhotoName']; ?>"
+	    	width="200"
+	    	height="200"
+	    />
+	  </a>
+
+ <?php
+
+  } //END while function
+
+  ?>
 
 		</section><!-- /END section -->
 

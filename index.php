@@ -1,33 +1,22 @@
-<?php 
+<?php
 
-//INCLUDES Code that CONNECTS TO DATABASE and creates $db CONNECTION OBJECT
-require_once('includes/db-connect.php');
+//REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE 
+require_once('includes/connection.php');
 
+//CHECK DATABASE CONNECTION OPEN
 if (isset($db) === true) {
 
-	//prepare SQL query to SELECT WorldRegion
-	$sqlWorldRegion = 'SELECT WorldRegionID, WorldRegionName
-					   FROM worldregion';
-
-	//PREPARE MEHOD does not EXECUTE Query but checks Query for PROBLEMS
-	$queryWorldRegion = $db->prepare($sqlWorldRegion);
-	
-	//PDO METHOD Executes the Query Stmnt that has been PREPARED - STORES OUTPUT in array
-	$queryWorldRegion->execute();
-
-	//PDO METHOD Stors HOW MANY rows have been RETURENED
-	$numRowsWorldRegion = $queryWorldRegion->rowCount();
-
-	//FETCH ALL METHOD will RETURN ALL of the array STORED in the OUTPUT from the SQL Query
-	$worldRegions = $queryWorldRegion->fetch(PDO::FETCH_ASSOC);
-
-	print_r($worldRegions);
-
-}
-
+	//SELECTING TABLE worldregion
+	//SELECTING ALL(*) DATA FROM TABLE
+	//ORDER DATA BY WorldRegionName
+	//ASSIGN DATA TO VARIABLE $sql
+	$sql = 'SELECT *
+			FROM worldregion
+			ORDER BY  WorldRegionName';
 
 ?>
 
+<!-- HTML5 DOCUMENT START -->
 <!doctype html>
 <html>
     <head>
@@ -42,17 +31,28 @@ if (isset($db) === true) {
         <h1>Welcome to World in Pictures</h1>
 
 		<section><!-- This section displays world region data from the world_pic database -->
-			
-			<?php 
 
-			if ($numRowsWorldRegion > 0) {
-				echo '<b><a href="countries.php?id=3">Australia &amp; Oceania</a></b><br/>';
-			} else {
-				echo 'No records found!';
-			}
+<?php
 
+	//USING DATABASE CONNECTION
+	//QUERYING DATABASE
+	//SELECTING ALL DATA FROM ABOVE INSTRUCTIONS
+	//ASSIGNING QUERY TO VARIABLE $query
+	$query = $db->query($sql);
 
-			?>
+	//USING WHILE LOOP TO PRINT RESULTS OF QUERY
+	//DATA RETRIEVED USING PDO:: FETCH_ASSOC - [ RETURNS ARRAY INDEXED BY COL NAME AS RETURNED IN RESULTS SET ]
+	//EACH RESULT PRINTED TO SCREEN AS A DYNAMIC LINK ASSOCIATED TO DATA ON countries.php?id='[WorldRegionID&Name]'
+	while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+		echo '<a href="countries.php?id='
+		.$row['WorldRegionID']. '">'
+		.$row['WorldRegionName']. '</a><br/>';
+
+	} //END while function
+
+} //END isset($db) function
+
+?>
 
 		</section><!-- /END section -->
 
