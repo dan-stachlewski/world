@@ -86,18 +86,19 @@ if (isset($_POST['insert'])) {
 		<form id="add-comment" method="POST" action="">
 
 			<p>
-				<label for="comment">Comment:</label>
+				<label for="comment">Comment: *</label>
 				<input id="comment" name="comment" type="text">
 			</p>
 
 			<p>
-				<label for="username-author">Username/Author:</label>
+				<label for="username-author">Username/Author: *</label>
 				<input id="username-author" name="username-author" type="text">
 			</p>
 
 			<p>
 				<label for="PictureID">Picture ID:</label>
-				<input id="PictureID" name="PictureID" type="text" value="<?php echo $id; ?>">
+				<!-- WE DONT WANT THE ID TO BE EDITABLE BY THE USER - USE THE readonly ATTRIBUTE (BOOLEAN ATTRIBUTE - WHEN PRESENT OR TRUE IT SPECIFIES THE INPUT FIELD IS 'READONLY') FOR TEXTBOX -->
+				<input id="PictureID" name="PictureID" type="text" value="<?php echo $id; ?>" readonly>
 			</p>
 
 			<p>
