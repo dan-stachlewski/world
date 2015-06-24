@@ -23,7 +23,7 @@ if(!empty($_GET['id'])){
             FROM `picture`
             WHERE `LocationID`='".$id."'";
 	} else {
-		header("Location: http://localhost/worldinpic/index.php");
+		header("Location: http://localhost/world/index.php");
 	exit();
 }
 

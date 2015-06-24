@@ -12,13 +12,6 @@ $Email       = "";
 $UserName    = "";
 $Password    = "";
 
-//DECLARING VARIABLES FOR FORM VALIDATION ERRORS
-$FirstNameErr = "";
-$LastNameErr  = "";
-$EmailErr     = "";
-$UserNameErr  = "";
-$PasswordErr  = "";
-
 //CREATED AN ERRORS ARRAY FOR STORING ERRORS TO BE DISPLAYED TOGETHER
 $errors = array();
 
@@ -169,28 +162,28 @@ function test_input($data) {
 
 <p>
 <label for="firstname">First Name: </label>
-<input id="firstname" name="FirstName" type="text" value="<?php if (isset($_POST['FirstName'])) echo $FirstName; ?>"><span class="error" style='color: red;'>* <?php echo $FirstNameErr;?></span>
+<input id="firstname" name="FirstName" type="text" value="<?php if (isset($_POST['FirstName'])) echo $FirstName; ?>">
 
 </p>
 
 <p>
 <label for="lastname">Last Name: </label>
-<input id="lastname" name="LastName" type="text" value="<?php if (isset($_POST['LastName'])) echo $LastName; ?>"><span class="error" style='color: red;'>* <?php echo $LastNameErr;?></span>
+<input id="lastname" name="LastName" type="text" value="<?php if (isset($_POST['LastName'])) echo $LastName; ?>">
 </p>
 
 <p>
 <label for="email">Email:</label>
-<input id="email" name="Email" type="email" value="<?php if (isset($_POST['Email'])) echo $Email; ?>"><span class="error" style='color: red;'>* <?php echo $EmailErr;?></span>
+<input id="email" name="Email" type="email" value="<?php if (isset($_POST['Email'])) echo $Email; ?>">
 </p>
 
 <p>
 <label for="username">Username:</label>
-<input id="username" name="UserName" type="text" value="<?php if (isset($_POST['UserName'])) echo $UserName; ?>"><span class="error" style='color: red;'>* <?php echo $UserNameErr;?></span>
+<input id="username" name="UserName" type="text" value="<?php if (isset($_POST['UserName'])) echo $UserName; ?>">
 </p>
 
 <p>
 <label for="password">Password:</label>
-<input id="password" name="Password" type="password" value="<?php if (isset($_POST['Password'])) echo $Password; ?>"><span class="error" style='color: red;'>* <?php echo $PasswordErr;?></span>
+<input id="password" name="Password" type="password" value="<?php if (isset($_POST['Password'])) echo $Password; ?>">
 </p>
 
 <p>

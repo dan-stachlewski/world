@@ -1,5 +1,13 @@
 <?php
 
+//START A SESSION TO STORE USER LOGIN CREDENTIALS
+session_start();
+
+echo "<pre>";
+echo "SESSION ";
+print_r($_SESSION);
+echo "</pre>";
+
 //REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE
 require_once('includes/connection.php');
 
@@ -29,6 +37,13 @@ if (isset($db) === true) {
     </head>
     <body>
         <h1>Welcome to World in Pictures</h1>
+
+		<section>
+			<p><a href="http://localhost/world/login.php">Login</a></p>
+			<p><a href="http://localhost/world/logoutFrom_Index.php">Logout</a></p>
+			<p><a href="http://localhost/world/public_register.php">Public Register</a></p>
+			<p><a href="http://localhost/world/photographer_register.php">Photographer Register</a></p>
+		</section>
 
 		<section><!-- This section displays world region data from the world_pic database -->
 

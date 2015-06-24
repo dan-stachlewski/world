@@ -1,6 +1,6 @@
 <?php
 
-//REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE 
+//REQUIRE_ONCE INCLUDE CODE USED TO RETRIEVE DATABASE CONNECTION CODE
 require_once('includes/connection.php');
 
 //CHECK DATABASE CONNECTION OPEN
@@ -23,7 +23,7 @@ if(!empty($_GET['id'])){
             FROM `country`
             WHERE `WorldRegionID`='".$id."'";
 	} else {
-		header("Location: http://localhost/worldinpic/index.php");
+		header("Location: http://localhost/world/index.php");
 	exit();
 }
 

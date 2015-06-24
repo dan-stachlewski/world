@@ -44,7 +44,7 @@ if(!empty($_GET['id'])){
     	 JOIN picture ON (picture.ID = photographer.ID)
     	 WHERE `PictureID` ='".$id."'"; //IAN I ADDED THE ID INSTEAD OF THE NUMBER 1 AND IT WORKS DINAMICALLY NOW CHEERS!
 	} else {
-		header("Location: http://localhost/worldinpic/index.php");
+		header("Location: http://localhost/world/index.php");
 	exit();
 }
 
